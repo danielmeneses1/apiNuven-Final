@@ -46,6 +46,9 @@ public class TarefaController {
         if (tarefa.getTitulo() ==null||tarefa.getTitulo().isEmpty()){
                 throw new TarefaValidationExceptions("O titulo da tarefa não pode estar em branco");
         }
+        if(tarefa.getTitulo().length()<4){
+            throw new TarefaValidationExceptions("o titulo da tarefa não pode ter menos que 4 algarismos");
+        }
         return ResponseEntity.status(201).body(tarefaService.adicionarTarefa(tarefa));
     }
 

@@ -76,8 +76,4 @@ public class TaferaService {
         }
     }
 
-    public Boolean excluirTarefa2(Long id){
-        repository.deleteById(id);
-        return true;
-    }
 }
