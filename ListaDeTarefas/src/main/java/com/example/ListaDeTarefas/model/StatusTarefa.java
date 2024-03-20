@@ -3,7 +3,9 @@ package com.example.ListaDeTarefas.model;
 public enum StatusTarefa {
     PENDENTE("pendente"),
     EM_ANDAMENTO("em andamento"),
-    CONCLUIDA("concluída");
+    CONCLUIDA("concluída"),
+
+    ATRASADA("atrasada");
 
     private final String descricao;
 

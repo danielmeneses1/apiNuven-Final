@@ -1,5 +1,6 @@
 package com.example.ListaDeTarefas.Service;
 
+import com.example.ListaDeTarefas.model.StatusTarefa;
 import com.example.ListaDeTarefas.model.Tarefa;
 import org.springframework.stereotype.Service;
 import com.example.ListaDeTarefas.repository.ITarefa;
@@ -18,6 +19,13 @@ public class TaferaService {
     //metodo Get
     public List<Tarefa> listarTarefas(){
         List<Tarefa> lista = repository.findAll();
+
+        for(Tarefa tarefa : lista){
+            if(tarefa.isAtrasada() && tarefa.getStatus()!= StatusTarefa.CONCLUIDA){
+                tarefa.setStatus(StatusTarefa.ATRASADA);
+                repository.save(tarefa);
+            }
+        }
         return lista;
     }
 

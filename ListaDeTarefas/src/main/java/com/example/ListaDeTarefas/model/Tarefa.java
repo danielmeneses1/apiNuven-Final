@@ -23,6 +23,9 @@ public class Tarefa {
     @Column(name = "data_criacao")
     private Date dataCriacao;
 
+    @Column(name="data_vencimento")
+    private Date dataVencimento;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatusTarefa status;
@@ -30,6 +33,7 @@ public class Tarefa {
     //Construtor padrão
     public Tarefa() {
         this.dataCriacao = new Date();
+        this.dataVencimento = new Date();
         this.status = StatusTarefa.PENDENTE;
         this.descricao = "Tarefa sem descrição";
     }
@@ -68,7 +72,21 @@ public class Tarefa {
         this.dataCriacao = dataCriacao;
     }
 
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public boolean isAtrasada(){
+        return dataVencimento != null && dataVencimento.before(new Date());
+    }
     public StatusTarefa getStatus() {
+        if(isAtrasada()){
+            return StatusTarefa.ATRASADA;
+        }
         return status;
     }
 
