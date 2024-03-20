@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS ListaDeTarefas;
-       USE ListaDeTarefas;
+USE ListaDeTarefas;
 
 CREATE TABLE IF NOT EXISTS tarefa (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,3 +9,6 @@ CREATE TABLE IF NOT EXISTS tarefa (
     data_vencimento TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status ENUM('PENDENTE', 'CONCLUIDA', 'ATRASADA') NOT NULL DEFAULT 'PENDENTE'
     );
+
+-- Adiciona a coluna data_vencimento à tabela tarefa
+ALTER TABLE tarefa ADD COLUMN data_vencimento TIMESTAMP;

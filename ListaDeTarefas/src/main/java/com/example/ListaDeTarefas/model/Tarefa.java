@@ -23,7 +23,7 @@ public class Tarefa {
     @Column(name = "data_criacao")
     private Date dataCriacao;
 
-    @Column(name="data_vencimento")
+    @Column(name= "data_vencimento")
     private Date dataVencimento;
 
     @Enumerated(EnumType.STRING)

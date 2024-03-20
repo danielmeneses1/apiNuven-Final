@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ListaDeTarefas.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ListaDeTarefas.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/apiLoading.iml" filepath="$PROJECT_DIR$/.idea/apiLoading.iml" />
     </modules>
   </component>
