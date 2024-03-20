@@ -5,6 +5,8 @@ import com.example.ListaDeTarefas.model.Tarefa;
 import org.springframework.stereotype.Service;
 import com.example.ListaDeTarefas.repository.ITarefa;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,22 @@ public class TaferaService {
     //metodo Get
     public List<Tarefa> listarTarefas(){
         List<Tarefa> lista = repository.findAll();
+
+        Collections.sort(lista, new Comparator<Tarefa>() {
+            @Override
+            public int compare(Tarefa tarefa1, Tarefa tarefa2) {
+                if(tarefa1.getDataVencimento()== null && tarefa2.getDataVencimento()==null){
+                    return 0;
+                }
+                if(tarefa1.getDataVencimento() == null){
+                    return 1;
+                }
+                if(tarefa2.getDataVencimento() == null){
+                    return -1;
+                }
+                return tarefa1.getDataVencimento().compareTo(tarefa2.getDataVencimento());
+            }
+        });
 
         for(Tarefa tarefa : lista){
             if(tarefa.isAtrasada() && tarefa.getStatus()!= StatusTarefa.CONCLUIDA){

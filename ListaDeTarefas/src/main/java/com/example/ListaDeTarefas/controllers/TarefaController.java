@@ -25,7 +25,7 @@ public class TarefaController {
         this.tarefaService= tarefaService;
     }
 
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<List<Tarefa>> listarTarefas() {
         return ResponseEntity.status(200).body(tarefaService.listarTarefas());
     }
@@ -41,7 +41,7 @@ public class TarefaController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/post")
     public ResponseEntity<Tarefa> criarTarefa(@RequestBody Tarefa tarefa){
         if (tarefa.getTitulo() ==null||tarefa.getTitulo().isEmpty()){
                 throw new TarefaValidationExceptions("O titulo da tarefa não pode estar em branco");
