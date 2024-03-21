@@ -1,6 +1,6 @@
 package com.example.ListaDeTarefas.controllers;
 
-import com.example.ListaDeTarefas.Service.TaferaService;
+import com.example.ListaDeTarefas.service.TaferaService;
 import com.example.ListaDeTarefas.exceptions.TarefaValidationExceptions;
 import com.example.ListaDeTarefas.repository.ITarefa;
 import com.example.ListaDeTarefas.model.Tarefa;

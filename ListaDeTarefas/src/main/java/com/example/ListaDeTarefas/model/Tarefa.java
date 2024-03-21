@@ -3,6 +3,7 @@ package com.example.ListaDeTarefas.model;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.NotBlank;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -31,7 +32,7 @@ public class Tarefa {
     private StatusTarefa status;
 
     //Construtor padrão
-    public Tarefa() {
+    public Tarefa(long l, String s, LocalDate localDate, StatusTarefa pendente) {
         this.dataCriacao = new Date();
         //this.dataVencimento = new Date();
         this.status = StatusTarefa.PENDENTE;

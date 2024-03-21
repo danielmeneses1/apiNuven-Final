@@ -1,4 +1,4 @@
-package com.example.ListaDeTarefas.Service;
+package com.example.ListaDeTarefas.service;
 
 import com.example.ListaDeTarefas.model.StatusTarefa;
 import com.example.ListaDeTarefas.model.Tarefa;

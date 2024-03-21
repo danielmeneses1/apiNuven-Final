@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ListaDeTarefas.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ListaDeTarefas.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/apiLoading.iml" filepath="$PROJECT_DIR$/.idea/apiLoading.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/apiNuven.iml" filepath="$PROJECT_DIR$/.idea/apiNuven.iml" />
     </modules>
   </component>
 </project>

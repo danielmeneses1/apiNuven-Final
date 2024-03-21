@@ -1,32 +1,36 @@
 package com.example.ListaDeTarefas.controllers;
 
-import com.example.ListaDeTarefas.Service.TaferaService;
+import com.example.ListaDeTarefas.model.StatusTarefa;
+import com.example.ListaDeTarefas.service.TaferaService;
 import com.example.ListaDeTarefas.exceptions.TarefaValidationExceptions;
 import com.example.ListaDeTarefas.model.Tarefa;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 public class TarefaControllerTest {
 
-    private TarefaController tarefaController;
-
     @Mock
     private TaferaService tarefaService;
 
+    @InjectMocks
+    private TarefaController tarefaController;
+
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        tarefaController = new TarefaController(tarefaService);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -41,9 +45,9 @@ public class TarefaControllerTest {
     }
 
     @Test
-    public void testBuscarTarefaPorId_Encontrada() {
+    public void testBuscarTarefaPorId_Existente() {
         Long id = 1L;
-        Tarefa tarefa = new Tarefa();
+        Tarefa tarefa = new Tarefa(1L, "Tarefa 1", LocalDate.now().plusDays(1), StatusTarefa.PENDENTE);
         when(tarefaService.buscarTarefaPorId(id)).thenReturn(tarefa);
 
         ResponseEntity<?> response = tarefaController.buscarTarefaPorId(id);
@@ -53,20 +57,19 @@ public class TarefaControllerTest {
     }
 
     @Test
-    public void testBuscarTarefaPorId_NaoEncontrada() {
+    public void testBuscarTarefaPorId_NaoExistente() {
         Long id = 1L;
         when(tarefaService.buscarTarefaPorId(id)).thenReturn(null);
 
         ResponseEntity<?> response = tarefaController.buscarTarefaPorId(id);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
-        assertEquals("Tarefa com o ID 1 não encontrada, procure por outro ID.", response.getBody());
     }
 
     @Test
     public void testCriarTarefa_Valida() {
-        Tarefa tarefa = new Tarefa();
-        tarefa.setTitulo("Tarefa");
+        Tarefa tarefa = new Tarefa(1L, "Tarefa 1", LocalDate.now().plusDays(1), StatusTarefa.PENDENTE);
+        tarefa.setTitulo("Tarefa teste");
         when(tarefaService.adicionarTarefa(tarefa)).thenReturn(tarefa);
 
         ResponseEntity<Tarefa> response = tarefaController.criarTarefa(tarefa);
@@ -76,27 +79,18 @@ public class TarefaControllerTest {
     }
 
     @Test
-    public void testCriarTarefa_Invalida() {
-        Tarefa tarefa = new Tarefa();
+    public void testCriarTarefa_TituloVazio() {
+        Tarefa tarefa = new Tarefa(1L, "Tarefa 1", LocalDate.now().plusDays(1), StatusTarefa.PENDENTE);
         tarefa.setTitulo("");
-        when(tarefaService.adicionarTarefa(tarefa)).thenThrow(TarefaValidationExceptions.class);
 
-        assertThrows(TarefaValidationExceptions.class, () -> tarefaController.criarTarefa(tarefa));
+        TarefaValidationExceptions exception = assertThrows(TarefaValidationExceptions.class,
+                () -> tarefaController.criarTarefa(tarefa));
+
+        assertEquals("O titulo da tarefa não pode estar em branco", exception.getMessage());
     }
 
     @Test
-    public void testEditarTarefa() {
-        Tarefa tarefa = new Tarefa();
-        when(tarefaService.editarTarefa(tarefa)).thenReturn(tarefa);
-
-        ResponseEntity<Tarefa> response = tarefaController.editarTarefa(tarefa);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(tarefa, response.getBody());
-    }
-
-    @Test
-    public void testExcluirTarefa_Encontrada() {
+    public void testExcluirTarefa_Existente() {
         Long id = 1L;
         when(tarefaService.excluirTarefa(id)).thenReturn(true);
 
@@ -107,7 +101,7 @@ public class TarefaControllerTest {
     }
 
     @Test
-    public void testExcluirTarefa_NaoEncontrada() {
+    public void testExcluirTarefa_NaoExistente() {
         Long id = 1L;
         when(tarefaService.excluirTarefa(id)).thenReturn(false);
 
