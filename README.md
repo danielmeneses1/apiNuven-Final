@@ -17,7 +17,7 @@ Configuração do banco de dados:
 cd ListaDeTarefas
 docker-compose up -d
 docker exec -it db bash
-mysql -u root -p
+mysql -uroot -p
 ``` 
 Apos isso ele pedirá a senha para root, a senha é: root
 
@@ -36,9 +36,30 @@ USE ListaDeTarefas;
         status ENUM('PENDENTE', 'CONCLUIDA', 'ATRASADA') NOT NULL DEFAULT 'PENDENTE'
     );
 ```
+PS* Você pode apenas copiar e colar o código acima no terminal mysql.
 
 Esta configuração inicial do banco é feita pois por algum motivo desconhecido, o banco inicia com um problema de campo faltando na tabela tarefa, que eu não consegui resolver.
 
 Apos essa configuração, o banco de dados estará pronto para ser utilizado.
 
 Após isso, basta iniciar a aplicação, rodando o arquivo ListaDeTarefasApplication e realizar as requisições HTTP para a API por meio de algum serviço http.
+
+Após parar a aplicação, para desligar o banco de dados, basta executar o comando:
+```shell
+docker-compose down
+```
+no mesmo diretório que foi executado o comando docker-compose up -d.
+
+
+TUTORIAL TESTES UNITÁRIOS
+=========================
+
+Para rodar os testes unitários, basta abrir o projeto no IntelliJ IDEA e clicar com o botão direito na pasta src/test/java e selecionar a opção Run 'All Tests'.
+
+Caso queira rodar os testes via terminal, basta abrir um terminal na raiz do projeto e executar o comando:
+```shell
+./gradlew test
+```
+
+Tambem é possivel rodar cada teste individualmente, basta clicar com o botão direito no teste desejado e selecionar a opção Run 'NomeDoTeste', no arquivo de teste desejado.
+
