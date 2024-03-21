@@ -19,7 +19,7 @@ Configuração do banco de dados:
 * Execute os codigos em sequencia:
 ```shell
 cd ListaDeTarefas
-docker-compose up -d
+docker compose up -d
 docker exec -it db bash
 mysql -uroot -p
 ``` 

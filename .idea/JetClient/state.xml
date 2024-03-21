@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JetClientState">
+    <option name="draftsState">
+      <draftsState>
+        <option name="requests">
+          <list>
+            <requestState>
+              <option name="id" value="34dd2368-2749-442b-a4e4-76f0f925e5e1" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 1" />
+            </requestState>
+          </list>
+        </option>
+      </draftsState>
+    </option>
+    <option name="folders">
+      <list>
+        <folderState>
+          <option name="id" value="2d821e54-0f95-4565-81a7-5f87eb8643ec" />
+          <option name="name" value="ListaDeTarefasAplication" />
+          <option name="sortWeight" value="1000000" />
+          <option name="syncProperties">
+            <synchronizationPropertiesState>
+              <option name="folderPath" value="$PROJECT_DIR$/.jetclient" />
+            </synchronizationPropertiesState>
+          </option>
+        </folderState>
+      </list>
+    </option>
     <option name="id" value="4c96109e-24dc-4455-92b6-cce0baf1d8bc" />
   </component>
 </project>
