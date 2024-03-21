@@ -1,3 +1,7 @@
+Para acessar a documentação oficial acesse:
+===========================================
+https://documenter.getpostman.com/view/25219814/2sA35A74u5
+
 TUTORIAL DE CONFIGURAÇÃO DE AMBIENTE
 ====================================
 Este tutorial tem como objetivo auxiliar na configuração do ambiente para verificar o funcionamento da API.
@@ -62,4 +66,7 @@ Caso queira rodar os testes via terminal, basta abrir um terminal na raiz do pro
 ```
 
 Tambem é possivel rodar cada teste individualmente, basta clicar com o botão direito no teste desejado e selecionar a opção Run 'NomeDoTeste', no arquivo de teste desejado.
+
+Mais detalhes em:
+https://documenter.getpostman.com/view/25219814/2sA35A74u5
 
