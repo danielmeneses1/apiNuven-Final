@@ -30,14 +30,19 @@ public class Tarefa {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private StatusTarefa status;
-
-    //Construtor padrão
-    public Tarefa(long l, String s, LocalDate localDate, StatusTarefa pendente) {
+    public Tarefa() {
         this.dataCriacao = new Date();
-        //this.dataVencimento = new Date();
         this.status = StatusTarefa.PENDENTE;
         this.descricao = "Tarefa sem descrição";
     }
+
+    public Tarefa(long l, String s, LocalDate localDate, StatusTarefa pendente) {
+        this.dataCriacao = new Date();
+        this.status = StatusTarefa.PENDENTE;
+        this.descricao = "Tarefa sem descrição";
+    }
+
+
 
     //getters and setters
 

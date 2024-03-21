@@ -56,6 +56,9 @@ public class TaferaService {
     //metodo post
     public Tarefa adicionarTarefa(Tarefa tarefa){
         Tarefa novaTarefa = repository.save(tarefa);
+        if(tarefa.getDescricao()==null || tarefa.getDescricao().isEmpty()){
+            tarefa.setDescricao("Sem descrição");
+        }
         return novaTarefa;
     }
 
