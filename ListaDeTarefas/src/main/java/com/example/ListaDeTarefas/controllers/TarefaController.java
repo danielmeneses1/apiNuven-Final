@@ -54,6 +54,9 @@ public class TarefaController {
 
     @PutMapping
     public ResponseEntity<Tarefa> editarTarefa(@RequestBody Tarefa tarefa) {
+        if(tarefa.getTitulo() == null || tarefa.getTitulo().isEmpty()) {
+            throw new TarefaValidationExceptions("O titulo da tarefa não pode estar em branco");
+        }
         return  ResponseEntity.status(200).body(tarefaService.editarTarefa(tarefa));
     }
 
@@ -62,7 +65,7 @@ public class TarefaController {
         boolean tarefaExcluida = tarefaService.excluirTarefa(id);
         if (tarefaExcluida==true) {
             String mensagem = "A tarefa com o ID " + id + " foi apagada com sucesso.";
-            return ResponseEntity.ok(mensagem);
+            return ResponseEntity.status(204).body(mensagem);
         } else {
             String mensagem = "A tarefa com o ID " + id + " não foi encontrada.";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);

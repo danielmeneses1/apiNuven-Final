@@ -2,7 +2,7 @@ Para acessar a documentação oficial acesse:
 ===========================================
 https://documenter.getpostman.com/view/25219814/2sA35A74u5
 
-TUTORIAL DE CONFIGURAÇÃO DE AMBIENTE
+Tutorial de configuração de ambiente
 ====================================
 Este tutorial tem como objetivo auxiliar na configuração do ambiente para verificar o funcionamento da API.
 
