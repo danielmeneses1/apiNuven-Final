@@ -30,7 +30,7 @@ public class TarefaController {
         return ResponseEntity.status(200).body(tarefaService.listarTarefas());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<?> buscarTarefaPorId(@PathVariable Long id) {
         Tarefa tarefa = tarefaService.buscarTarefaPorId(id);
         if (tarefa != null) {
@@ -57,7 +57,7 @@ public class TarefaController {
         return  ResponseEntity.status(200).body(tarefaService.editarTarefa(tarefa));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/del/{id}")
     public ResponseEntity<String> excluirTarefa(@PathVariable Long id){
         boolean tarefaExcluida = tarefaService.excluirTarefa(id);
         if (tarefaExcluida==true) {
