@@ -1,6 +1,6 @@
 Para acessar a documentação oficial acesse:
 ===========================================
-https://documenter.getpostman.com/view/25219814/2sA35A74u5
+[DOCUMENTAÇÃO](https://documenter.getpostman.com/view/25219814/2sA35A74u5)
 
 Tutorial de configuração de ambiente
 ====================================
@@ -14,7 +14,16 @@ Pré-requisitos:
 Recomendação:
 * Utilizar o IntelliJ IDEA como IDE para desenvolvimento.
 
-Configuração do banco de dados:
+__Baixando o projeto:__
+* Abra um terminal na pasta que deseja baixar o projeto.
+* Execute o comando:
+```shell
+git clone https://github.com/danielmeneses1/apiNuven-Final.git .
+```
+
+* Após isso inicie o IntelliJ IDEA e abra o projeto.
+
+__Configuração do banco de dados:__
 * Abra um terminal na raiz do projeto.
 * Execute os codigos em sequencia:
 ```shell
@@ -26,7 +35,34 @@ Apos essa configuração, o banco de dados estará pronto para ser utilizado.
 
 Após isso, basta iniciar a aplicação, rodando o arquivo ListaDeTarefasApplication e realizar as requisições HTTP para a API por meio de algum serviço http.
 
-Após parar a aplicação, para desligar o banco de dados, basta executar o comando:
+Para fazer uma requisição get para a API, basta acessar a URL:
+```shell
+http://localhost:8090/tarefas/get
+````
+com o método GET.
+
+Para fazer uma requisição post para a API, basta acessar a URL:
+```shell
+http://localhost:8090/tarefas/post
+```
+
+com o método POST e o corpo da requisição no formato JSON:
+```json
+{
+  "titulo": "teste",
+  "descricao": "Teste de descrição",
+  "dataCriacao": "2024-03-22T11:09:50.708+00:00",
+  "dataVencimento": "2024-03-22T11:13:52.708+00:00",
+  "status": "PENDENTE"
+}
+```
+lembrando que o unico campo obrigatório é o titulo.
+
+__Para mais detalhes sobre as requisições, acesse a documentação oficial da API:__
+
+
+
+__Após parar a aplicação, para desligar o banco de dados, basta executar o comando:__
 ```shell
 docker-compose down
 ```

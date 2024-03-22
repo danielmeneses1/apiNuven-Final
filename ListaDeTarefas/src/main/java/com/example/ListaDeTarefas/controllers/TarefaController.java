@@ -65,7 +65,7 @@ public class TarefaController {
         boolean tarefaExcluida = tarefaService.excluirTarefa(id);
         if (tarefaExcluida==true) {
             String mensagem = "A tarefa com o ID " + id + " foi apagada com sucesso.";
-            return ResponseEntity.status(204).body(mensagem);
+            return ResponseEntity.ok(mensagem);
         } else {
             String mensagem = "A tarefa com o ID " + id + " não foi encontrada.";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(mensagem);
