@@ -52,7 +52,7 @@ public class TarefaController {
         return ResponseEntity.status(201).body(tarefaService.adicionarTarefa(tarefa));
     }
 
-    @PutMapping
+    @PutMapping("/put")
     public ResponseEntity<Tarefa> editarTarefa(@RequestBody Tarefa tarefa) {
         if(tarefa.getTitulo() == null || tarefa.getTitulo().isEmpty()) {
             throw new TarefaValidationExceptions("O titulo da tarefa não pode estar em branco");

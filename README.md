@@ -1,5 +1,15 @@
-TUTORIAL API LISTA DE TAREFAS
+API LISTA DE TAREFAS
 ============================
+__Esta aplicação é uma API REST que tem como objetivo gerenciar uma lista de tarefas.__
+
+__A API foi desenvolvida utilizando a linguagem Java, com o framework Spring Boot.__
+
+__A API possui as seguintes funcionalidades:__
+* Cadastrar uma tarefa.
+* Listar todas as tarefas cadastradas.
+* Listar uma tarefa específica.
+* Atualizar uma tarefa.
+* Deletar uma tarefa.
 
 Para acessar a documentação da API, clique no link abaixo:
 [DOCUMENTAÇÃO](https://documenter.getpostman.com/view/25219814/2sA35A74u5)
